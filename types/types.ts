@@ -21,26 +21,26 @@ category_uid: FilterEqualTypeInput
 }
 
 export interface FilterMatchTypeInput {
-    /** One or more words to filter on */
-    match?: Maybe<Scalars['String']>;
+
+    match?:['String']
 }
 export interface ProductCard {
      name: string
 }
 export interface CategoryFilterInput {
-    /** Filter by the unique category ID for a `CategoryInterface` object. */
-    category_uid?: Maybe<FilterEqualTypeInput>;
+
+    category_uid?: FilterEqualTypeInput
     /** Deprecated: use 'category_uid' to filter uniquely identifiers of categories. */
-    ids?: Maybe<FilterEqualTypeInput>;
+    ids?: FilterEqualTypeInput
     /** Filter by the display name of the category. */
-    name?: Maybe<FilterMatchTypeInput>;
+    name?: FilterMatchTypeInput
     /** Filter by the unique parent category ID for a `CategoryInterface` object. */
-    parent_category_uid?: Maybe<FilterEqualTypeInput>;
+    parent_category_uid?: FilterEqualTypeInput
     /** Filter by the unique parent category ID for a `CategoryInterface` object. */
-    parent_id?: Maybe<FilterEqualTypeInput>;
+    parent_id?:FilterEqualTypeInput
     /** Filter by the part of the URL that identifies the category. */
-    url_key?: Maybe<FilterEqualTypeInput>;
+    url_key?: FilterEqualTypeInput
     /** Filter by the URL path for the category. */
-    url_path?: Maybe<FilterEqualTypeInput>;
+    url_path?: FilterEqualTypeInput
 }
 

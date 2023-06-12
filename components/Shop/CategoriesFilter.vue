@@ -1,39 +1,62 @@
 
 <template>
-  <div class="w-1/3 mx-auto my-auto">
-    <h1 class="text-center py-4">Categories</h1>
-  <select class="w-full  bg-gray-200 border-2 border-black dark:outline-0 rounded-lg px-4 py-2 text-xs lg:text-sm appearance-none"
+  <div class="w-full mx-auto my-auto text-center px-6">
+    <h1 class=" py-4">Categories</h1>
+
+    <div >
+      <select
+          class="w-1/3  bg-gray-200 border-2 border-black dark:outline-0 rounded-lg px-4 py-2 text-xs lg:text-sm appearance-none"
+
+          @change="test()"
           v-model="category">
-    <option value="">None</option>
+        <option value="">None</option>
 
-    <option
-        v-for="{name , uid} in categories"
-        :value="uid"
-        :id="uid"
-        :key="uid"
-    >
-      {{name}}
-      {{ uid}}
-    </option>
-  </select>
+        <option
+            v-for="{name , uid} in categories"
+            :value="uid"
+            :id="uid"
+            :key="uid"
+        >
+          {{name}}
+          {{ uid}}
+        </option>
+      </select>
 
+      <div
 
-<div
+          v-for="{name , uid} in categories"
+          :key="uid"
+          :id="uid"
+          :data-index="uid"
 
-    v-for="{name , uid} in products"
-    :key="uid"
-    :id="uid"
-    :data-index="uid"
-
->
-
-  {{uid}}
-{{category}}
-  {{name}}
-</div>
+      >
 
 
+        {{uid}}
+        {{category}}
+        {{name}}
+      </div>
+    </div>
+    <div class="flex">
+      <article
+          v-if="category"
+          v-for="(product , uid) in productsArray"
+          :key="uid"
+          :id="uid"
+          :data-index="uid"
 
+      >
+
+        <img class="w-48" :src="product.image.url">
+        {{uid}}
+        {{category}}
+
+        <p class="text-xs"> {{product.name}}</p>
+
+      </article>
+
+
+    </div>
 
 
   </div>
@@ -50,25 +73,44 @@ import {products} from "~/apollo/queries/products";
 
 
 
-const category = ref('MzA=')
+const category = ref('')
 
 
+const {eq} = useProducts()
 
-const { categories, fetchCategories ,formattedCategories  } = useCategories()
+const {uid, categories, fetchCategories ,formattedCategories  } = useCategories()
 await fetchCategories()
 
 
 console.log(categories)
 
+const state = reactive({
+
+  eq : 'Mw=='
+})
+console.log(uid)
 
 /*category.value = 'MTU='*/
 
+const products2 = ref([])
 
 const FilterEqualTypeInput: FilterEqualTypeInput
     =   {
   in: ['1'],
   eq: category.value};
 
+
+
+function test() {
+
+
+  FilterEqualTypeInput.eq = category.value
+
+
+}
+
+console.log(eq.value)
+console.log(category.value)
 
 console.log(FilterEqualTypeInput)
 
@@ -82,6 +124,9 @@ const {result, error} = useQuery(products,{
 
 });
 
+const productsArray =  result.value?.products.items
+
+products2.value = productsArray
 
 
 

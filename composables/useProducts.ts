@@ -11,7 +11,7 @@ const eq = ref('')
 
 const state = reactive({
     products: [],
-    eq : ''
+    eq : 'Mw=='
 })
 
 
@@ -19,13 +19,11 @@ const state = reactive({
 const FilterEqualTypeInput: FilterEqualTypeInput
     =   {
     in: ['1'],
-    eq: 'Mjc='
+    eq: state.eq
 };
 
 
-
 console.log(FilterEqualTypeInput)
-
 
 export function useProducts() {
 
@@ -51,6 +49,7 @@ export function useProducts() {
 
         state.products = productsArray
 
+        console.log()
 
     }
 
