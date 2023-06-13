@@ -15,7 +15,7 @@ export default defineNuxtConfig({
   },
   modules: [
 
-    '@nuxtjs/tailwindcss','@nuxtjs/apollo'
+    '@nuxtjs/tailwindcss','@nuxtjs/apollo','@pinia/nuxt'
   ],
 
 

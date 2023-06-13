@@ -15,8 +15,9 @@
     "nuxt": "^3.5.2"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.4.11",
     "graphql": "^16.5.0",
-    "graphql-tag": "^2.12.6"
-
+    "graphql-tag": "^2.12.6",
+    "pinia": "^2.1.3"
   }
 }
