@@ -72,7 +72,6 @@ import {
 import {products} from "~/apollo/queries/products";
 
 
-console.log(useProduct().showProducts())
 
 const category = ref('')
 
@@ -87,11 +86,7 @@ const test = ref([])
 
 function showProducts() {
 
-  useProduct().showProducts()
 
-  let products = useProduct().products
-
-  products = test.value
 
   console.log(test.value)
 

@@ -89,7 +89,7 @@ export const useProduct = defineStore<'product', ProductState, ProductGetters, P
 
         },
         getters: {
-            lineItems: (state) => state.products.items,
+            lineItems: (state) => state.items,
 
         },
 
