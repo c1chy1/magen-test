@@ -57,14 +57,14 @@
 
 
     </div>
-
+<button @click="showProducts">show</button>
 
   </div>
 </template>
 
 <script setup lang="ts">
 import {useCategories} from "~/composables/useCategories";
-
+import {useProduct} from '@/stores/product'
 import {useProducts} from "~/composables/useProducts";
 import {
   FilterEqualTypeInput
@@ -72,24 +72,39 @@ import {
 import {products} from "~/apollo/queries/products";
 
 
-
+console.log(useProduct().showProducts())
 
 const category = ref('')
 
-
-const {eq} = useProducts()
 
 const {uid, categories, fetchCategories ,formattedCategories  } = useCategories()
 await fetchCategories()
 
 
-console.log(categories)
+
+const test = ref([])
+
+
+function showProducts() {
+
+  useProduct().showProducts()
+
+  let products = useProduct().products
+
+  products = test.value
+
+  console.log(test.value)
+
+}
+
+
+
 
 const state = reactive({
 
   eq : 'Mw=='
 })
-console.log(uid)
+
 
 /*category.value = 'MTU='*/
 
@@ -102,6 +117,7 @@ const FilterEqualTypeInput: FilterEqualTypeInput
 
 
 
+/*
 function test() {
 
 
@@ -109,12 +125,10 @@ function test() {
 
 
 }
+*/
 
-console.log(eq.value)
-console.log(category.value)
 
-console.log(FilterEqualTypeInput)
-
+/*
 const {result, error} = useQuery(products,{
 
   filter: {
@@ -128,6 +142,7 @@ const {result, error} = useQuery(products,{
 const productsArray =  result.value?.products.items
 
 products2.value = productsArray
+*/
 
 
 

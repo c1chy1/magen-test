@@ -24,8 +24,6 @@ const {products, fetchProducts} = useProducts()
 await fetchProducts()
 
 
-console.log(products)
-
 /*defineProps<{
   uid: string
 }>()*/
