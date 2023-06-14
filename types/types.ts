@@ -4,7 +4,12 @@ match : [string]
 
 }
 
+export interface Product {
+    items: []
 
+
+
+}
 
 export interface  FilterEqualTypeInput {
 
@@ -24,9 +29,7 @@ export interface FilterMatchTypeInput {
 
     match?:['String']
 }
-export interface ProductCard {
-     name: string
-}
+
 export interface CategoryFilterInput {
 
     category_uid?: FilterEqualTypeInput

@@ -71,6 +71,8 @@ import {
 } from '@/types/types'
 import {products} from "~/apollo/queries/products";
 
+console.log(useProduct())
+
 
 
 const category = ref('')
@@ -84,13 +86,13 @@ await fetchCategories()
 const test = ref([])
 
 
-function showProducts() {
+/*function showProducts() {
 
 
 
   console.log(test.value)
 
-}
+}*/
 
 
 

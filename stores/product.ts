@@ -4,15 +4,23 @@ import {products} from "~/apollo/queries/products";
 
 import { useClient } from '@/utilities/apollo-client'
 import {
-    FilterEqualTypeInput
+    FilterEqualTypeInput,
+    Product,
+    ProductAttributeFilterInput
 
 } from '@/types/types'
 
 interface ProductState {
-  items : []
+  items : Product
 }
 
+const ProductAttributeFilterInput: FilterEqualTypeInput
+    =   {
+    in: ['1'],
+    eq: 'Mw=='};
 
+
+console.log(ProductAttributeFilterInput)
 
 const FilterEqualTypeInput: FilterEqualTypeInput
     =   {
@@ -70,18 +78,17 @@ export const useProduct = defineStore<'product', ProductState, ProductGetters, P
                     return this
                 }
             },*/
-            async getProduct() {
+            async  getProduct() {
 
 
                 const {result, error} = useQuery(products,{
 
-                    filter: {
-
-                        category_uid : FilterEqualTypeInput
-
-                    },
+                    filter: ProductAttributeFilterInput
 
                 });
+                const productsArray =  result.value?.products.items
+
+                this.items = productsArray
 
             },
 
