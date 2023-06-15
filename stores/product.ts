@@ -5,14 +5,21 @@ import {products} from "~/apollo/queries/products";
 import { useClient } from '@/utilities/apollo-client'
 import {
     FilterEqualTypeInput,
-    Product,
+    ProductInterface,
     ProductAttributeFilterInput
 
 } from '@/types/types'
 
-interface ProductState {
-  items : Product
+interface Product {
+  items : ProductInterface
 }
+
+interface ProductState {
+    products: Product
+}
+
+
+
 
 const ProductAttributeFilterInput: FilterEqualTypeInput
     =   {
@@ -30,12 +37,12 @@ const FilterEqualTypeInput: FilterEqualTypeInput
 
 
 interface ProductActions {
+    productCreate(): Promise<ProductState>
     getProduct(): Promise<ProductState>
 
 }
 
-type GetterFunctions =
-    | 'lineItems'
+type GetterFunctions = 'products'
 
 
 type ProductGetters = {
@@ -48,7 +55,18 @@ export const useProduct = defineStore<'product', ProductState, ProductGetters, P
     'product',
     {
         state: () => ({
-            items: []
+
+            products: {
+                items: {
+
+                    name: ''
+
+                },
+                en: '',
+                in : ''
+            }
+
+
 
         }),
 
@@ -78,6 +96,9 @@ export const useProduct = defineStore<'product', ProductState, ProductGetters, P
                     return this
                 }
             },*/
+
+
+
             async  getProduct() {
 
 
@@ -88,7 +109,10 @@ export const useProduct = defineStore<'product', ProductState, ProductGetters, P
                 });
                 const productsArray =  result.value?.products.items
 
-                this.items = productsArray
+                this.products.items = productsArray
+
+
+                console.log(this.products.items)
 
             },
 
@@ -96,7 +120,7 @@ export const useProduct = defineStore<'product', ProductState, ProductGetters, P
 
         },
         getters: {
-            lineItems: (state) => state.items,
+            products: (state) => state.products.items,
 
         },
 

@@ -86,13 +86,11 @@ await fetchCategories()
 const test = ref([])
 
 
-/*function showProducts() {
+function showProducts() {
 
 
 
-  console.log(test.value)
-
-}*/
+}
 
 
 
