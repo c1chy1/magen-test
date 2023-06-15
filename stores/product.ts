@@ -10,12 +10,9 @@ import {
 
 } from '@/types/types'
 
-interface Product {
-  items : ProductInterface
-}
 
 interface ProductState {
-    products: Product
+    products:  ProductInterface
 }
 
 
@@ -91,15 +88,9 @@ export const useProduct = defineStore<'product', ProductState, ProductGetters, P
     {
         state: () => ({
 
-            products: {
-                items: {
+             products : []
 
-                    name: ''
 
-                },
-                en: '',
-                in : ''
-            }
 
 
 
@@ -136,17 +127,18 @@ export const useProduct = defineStore<'product', ProductState, ProductGetters, P
 
             async  getProduct() {
 
-
+                const FilterEqualTypeInput: FilterEqualTypeInput
+                    =   {
+                    in: ['1'],
+                    eq: "Mw=="};
                 const {result, error} = useQuery(products,{
 
-                    filter: categoryFilter
+                    filter: ProductAttributeFilterInput
                 });
-                const productsArray =  result.value?.products.items
-
-                this.products.items = productsArray
+                const productsArray =  result.value?.products
 
 
-                console.log(this.products.items)
+                console.log(productsArray)
 
             },
 

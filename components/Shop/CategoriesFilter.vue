@@ -88,11 +88,9 @@ const test = ref([])
 
 function showProducts() {
 
-
+  console.log(useProduct().getProduct())
 
 }
-
-
 
 
 const state = reactive({
@@ -110,7 +108,11 @@ const FilterEqualTypeInput: FilterEqualTypeInput
   in: ['1'],
   eq: category.value};
 
+const {result, error} = useQuery(products,{
 
+  filter: FilterEqualTypeInput
+});
+const productsArray =  result.value?.products
 
 /*
 function test() {

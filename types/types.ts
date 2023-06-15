@@ -26,6 +26,36 @@ export interface Category {
 match : [string]
 
 }
+
+export interface Aggregation {
+    /** Attribute code of the aggregation group. */
+    attribute_code: Scalars['String'];
+    /** The number of options in the aggregation group. */
+    count?: Maybe<Scalars['Int']>;
+    /** The aggregation display name. */
+    label?: Maybe<Scalars['String']>;
+    /** Array of options for the aggregation. */
+    options?: Maybe<Array<Maybe<AggregationOption>>>;
+    /** The relative position of the attribute in a layered navigation block */
+    position?: Maybe<Scalars['Int']>;
+}
+
+export interface AggregationOption extends AggregationOptionInterface {
+    /** The number of items that match the aggregation option. */
+    count?: Maybe<Scalars['Int']>;
+    /** Aggregation option display label. */
+    label?: Maybe<Scalars['String']>;
+    /** The internal ID that represents the value of the option. */
+    value: Scalars['String'];
+}
+export interface AggregationOptionInterface {
+    /** The number of items that match the aggregation option. */
+    count?: Maybe<Scalars['Int']>;
+    /** Aggregation option display label. */
+    label?: Maybe<Scalars['String']>;
+    /** The internal ID that represents the value of the option. */
+    value: Scalars['String'];
+}
 export interface CategoryInterface {
     available_sort_by?: Maybe<Array<Maybe<Scalars['String']>>>;
     /** Breadcrumbs, parent categories info. */
@@ -168,25 +198,15 @@ export interface CategoryTree extends CategoryInterface, RoutableInterface {
 }
 
 
-export interface ProductInterface {
-    name:string
 
+
+export interface FilterEqualTypeInput {
+    /** A string to filter on */
+    eq?: InputMaybe<Scalars['String']>;
+    /** An array of values to filter on */
+    in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 }
 
-
-export interface  FilterEqualTypeInput {
-
-    in : [string]
-    eq: string
-
-}
-
-export interface  FilterEqualTypeInput {
-
-    in : [string]
-    eq: string
-
-}
 
 export interface ProductInterface {
     activity?: Maybe<Scalars['String']>;
@@ -430,7 +450,23 @@ export interface ProductImage extends MediaGalleryInterface {
     /** The URL of the product image or video. */
     url?: Maybe<Scalars['String']>;
 }
-
+export interface Products {
+    /** Layered navigation aggregations. */
+    aggregations?: Maybe<Array<Maybe<Aggregation>>>;
+    /**
+     * Layered navigation filters array.
+     * @deprecated Use aggregations instead
+     */
+/*    filters?: Maybe<Array<Maybe<LayerFilter>>>;*/
+    /** An array of products that match the specified search criteria. */
+    items?: Maybe<Array<Maybe<ProductInterface>>>;
+    /** An object that includes the page_info and currentPage values specified in the query. */
+/*    page_info?: Maybe<SearchResultPageInfo>;*/
+    /** An object that includes the default sort field and all available sort fields. */
+/*    sort_fields?: Maybe<SortFields>;*/
+    /** The number of products that are marked as visible. By default, in complex products, parent products are visible, but their child products are not. */
+    total_count?: Maybe<Scalars['Int']>;
+}
 
 export interface RoutableInterface {
     /** Contains 0 when there is no redirect error. A value of 301 indicates the URL of the requested resource has been changed permanently, while a value of 302 indicates a temporary redirect */

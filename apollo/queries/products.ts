@@ -16,7 +16,13 @@ export const products = gql`
                 categories {
                     ... on CategoryTree {
                         uid
+                        products {
+                            items {
+                                name
+                            }
+                        }
                     }
+                    
                 }
                 image {
                     url
