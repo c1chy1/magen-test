@@ -48,7 +48,42 @@ type GetterFunctions = 'products'
 type ProductGetters = {
     [key in GetterFunctions]: (state: ProductState) => any
 }
+export interface FacetSearchParams {
+    categorySlug?: string;
+    rootCatSlug?: string;
+    term?: string;
+    page?: number;
+    itemsPerPage?: number;
+    sort?: string;
+    filters?: Record<string, string[]>;
+    metadata?: any;
+    [x: string]: any;
+}
 
+const attributeFilter : Record<string, { from: number, to: number } | { eq: unknown } | { in: unknown }> = {};
+
+
+ const params = {
+
+    filters : {
+
+        category_uid: {
+
+            eq : "",
+            in: ''
+        }
+    }
+ }
+
+
+const inputFilters = params?.filters ?? {};
+
+const categoryFilter = {
+    category_uid: { in: [params.filters.category_uid ?? []] },
+};
+
+
+console.log(categoryFilter)
 
 
 export const useProduct = defineStore<'product', ProductState, ProductGetters, ProductActions>(
@@ -104,8 +139,7 @@ export const useProduct = defineStore<'product', ProductState, ProductGetters, P
 
                 const {result, error} = useQuery(products,{
 
-                    filter: ProductAttributeFilterInput
-
+                    filter: categoryFilter
                 });
                 const productsArray =  result.value?.products.items
 
