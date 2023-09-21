@@ -8,10 +8,10 @@
 
         <div class="w-1/2">
           <ShopProductTitle text-size="big" :title="product.name" text-direction="center"/>
-<!--          <ShopProductPrice
+          <ShopProductPrice
               :price="product.price_range.maximum_price.regular_price.value"
               :currency="product.price_range.maximum_price.regular_price.currency"
-          />-->
+          />
         </div>
         <div class="w-1/2">
           <ShopProductImage
