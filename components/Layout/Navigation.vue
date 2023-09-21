@@ -8,8 +8,8 @@
 
 
 
-    <div :id="index"  v-for="(category , index) in categories">
-      <p  >{{category.name}}</p>
+    <div :id="index"   v-for="(category , index) in categories">
+      <p class="py-10" >{{category.name}} {{category.uid}}</p>
     </div>
 
 </nav>

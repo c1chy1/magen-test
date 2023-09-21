@@ -15,9 +15,8 @@
 
 
 <script setup lang="ts">
-import {useProducts} from "~/composables/useProducts";
 import ProductPrice from "~/components/Shop/ProductPrice.vue";
-import {useProduct} from '@/stores/product'
+
 
 const {products, fetchProducts} = useProducts()
 

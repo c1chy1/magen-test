@@ -1,6 +1,6 @@
 <template>
 
-    <h1 class="text-xs py-4">{{title}}</h1>
+    <h1 class="text-base py-4">{{title}}</h1>
 
 </template>
 

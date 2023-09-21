@@ -1,10 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
+
+
+
+
+
+import {config} from "~/utils/config";
+
 export default defineNuxtConfig({
 
-
   css: ['assets/css/tailwind.css'],
-
-  workbox: false,
 
   postcss: {
     plugins: {
@@ -17,18 +22,50 @@ export default defineNuxtConfig({
 
     '@nuxtjs/tailwindcss','@nuxtjs/apollo','@pinia/nuxt'
   ],
+  typescript: {
+    includeWorkspace: true,
+  },
 
+  devtools: {
+    enabled: true,
+  },
 
 
   apollo: {
-    clients: {
-    default: {
-      httpEndpoint: 'https://venia.magento.com/graphql',
-      inMemoryCacheOptions: {
-        addTypename: false,
-      },
-    },
-    },
-  }
+    autoImports: false,
+    proxyCookies: true,
+      clientAwareness: true,
+clients: {
+   default : {
 
+     httpEndpoint: "https://venia.magento.com/graphql",
+     httpLinkOptions: {
+       fetchOptions: {
+         credentials: 'include',
+       },
+     },
+     // wsEndpoint: '',
+     // wsLinkOptions: {},
+     // websocketsOnly: false,
+
+     defaultOptions: {
+       query: {
+         errorPolicy: 'all',
+       },
+       watchQuery: {
+         errorPolicy: 'all',
+       },
+       mutate: {
+         errorPolicy: 'all',
+       },
+     },
+
+     tokenStorage: 'cookie',
+     authType: 'Bearer',
+
+
+   }
+
+    }
+  }
 })

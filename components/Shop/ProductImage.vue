@@ -2,7 +2,7 @@
 
 
 
-    <img :src="url" class="object-fill" :alt="alt">
+    <img :src="url" class=" h-full" :alt="alt">
 
 
 
@@ -11,7 +11,7 @@
 <script setup lang="ts">
  defineProps<{
   url: string;
-  alt:string
+  alt?:string
 }>();
 
 
