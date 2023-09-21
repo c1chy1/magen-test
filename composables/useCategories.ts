@@ -4,7 +4,7 @@ import {queryProducts} from "~/apollo/queries/products";
 
 import { useCategoryStore } from '~~/store/store'
 import { storeToRefs } from 'pinia'
-import {provideApolloClient, useApolloClient} from "@vue/apollo-composable";
+import {useApolloClient} from "@vue/apollo-composable";
 import {CategoryListQuery, CategoryProducts, ProductInterface} from "~/types/types";
 
 

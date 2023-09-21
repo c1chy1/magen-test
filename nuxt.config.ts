@@ -1,12 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-
-
-
-
-
-import {config} from "~/utils/config";
-
 export default defineNuxtConfig({
 
   css: ['assets/css/tailwind.css'],
