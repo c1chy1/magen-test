@@ -13,8 +13,6 @@ import {CategoryListQuery, CategoryProducts, ProductInterface} from "~/types/typ
 export const useCategories = () => {
 
     useApolloClient()
-    provideApolloClient(apolloClient)
-
 
     const selectedVariation = ref()
     const { setCategory , setCategoryID , setProducts} = useCategoryStore()
@@ -62,7 +60,7 @@ export const useCategories = () => {
             if (data.value) {
 
 
-                console.log(data.value)
+
 
                 state.products = data.value?.categories.items.map((category : any) => ({
 

@@ -44,16 +44,13 @@ const FilterEqualTypeInput: FilterEqualTypeInput
 
 const filter = {category_uid : FilterEqualTypeInput}
 
-console.log(filter + "filter")
-console.log(FilterEqualTypeInput + "FilterEqualTypeInput")
-console.log(FilterEqualTypeInput)
 
 const variables = {filter}
 
 const { data } = await useAsyncQuery(products , variables)
 
 
-console.log(data.value)
+
 
 /*const test = ref([])
 
